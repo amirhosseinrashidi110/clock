@@ -3,6 +3,7 @@ import ClockBar from "./ClockBar";
 import Login from "./Login";
 import Getticket from "./Getticket";
 import Receipt from "./Receipt";
+import portugalSong from "./assets/Download Portugal World Cup Song by Mason - Listen MP3 & WAV for FREE on audio.com.mp3";
 
 type User = {
   name: string;
@@ -68,7 +69,7 @@ function App() {
 
   return (
     <>
-      <audio ref={audioRef} src="/portugal-song.mp3" loop />
+      <audio ref={audioRef} src={portugalSong} loop />
       <ClockBar musicPlaying={musicPlaying} onToggleMusic={toggleMusic} userName={user.name} onLogout={() => setUser(null)} />
       <Getticket userName={user.name} onComplete={(t) => setTicket(t)} />
     </>
