@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ClockApp from "./ClockApp";
 import Login from "./Login";
 import Getticket from "./Getticket";
 import Receipt from "./Receipt";
@@ -48,11 +49,12 @@ function App() {
     <>
       <div className="user-bar">
         <span>خوش آمدید، {user.name}</span>
-        <button className="btn secondary" onClick={() => setUser(null)}>
+        <button className="btn-logout" onClick={() => setUser(null)}>
           خروج
         </button>
       </div>
       <Getticket userName={user.name} onComplete={(t) => setTicket(t)} />
+      <ClockApp />
     </>
   );
 }
