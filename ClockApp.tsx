@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 // @ts-ignore: CSS module declaration not present
 import "./ClockApp.css";
-
 type Mode = "clock" | "stopwatch" | "timer";
 type Lap = { id: number; time: number; total: number };
 
