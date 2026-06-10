@@ -493,6 +493,141 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
+/* ===== Getticket ===== */
+.getticket-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px 24px;
+}
+
+.getticket-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.getticket-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.getticket-header p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.stadium-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.stadium-card {
+  position: relative;
+  border-radius: 20px;
+  padding: 32px 24px;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.stadium-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.stadium-card.selected {
+  border-color: #6366f1;
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+}
+
+.stadium-icon {
+  font-size: 56px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.stadium-card:hover .stadium-icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.stadium-info {
+  text-align: center;
+}
+
+.stadium-info h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.stadium-city {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 8px;
+}
+
+.stadium-match {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+.stadium-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.stadium-card:hover .stadium-glow {
+  opacity: 1;
+}
+
+.stadium-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #6366f1;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.getticket-btn {
+  padding: 16px 48px;
+  font-size: 18px;
+  border-radius: 14px;
+  animation: fadeIn 0.3s ease;
+}
+
 /* ===== User Bar ===== */
 .user-bar {
   position: fixed;

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ClockApp from "./ClockApp";
 import Login from "./Login";
+import Getticket from "./Getticket";
 
 type User = {
   name: string;
@@ -23,7 +23,7 @@ function App() {
           خروج
         </button>
       </div>
-      <ClockApp />
+      <Getticket userName={user.name} />
     </>
   );
 }
