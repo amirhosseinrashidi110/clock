@@ -4,8 +4,10 @@ type Stadium = {
   id: number;
   name: string;
   city: string;
+  country: string;
   match: string;
-  gradient: string;
+  date: string;
+  image: string;
 };
 
 type TicketChoice = {
@@ -20,24 +22,30 @@ type TicketChoice = {
 const stadiums: Stadium[] = [
   {
     id: 1,
-    name: "Lusail Stadium",
-    city: "Lusail",
-    match: "پرتغال vs غنا",
-    gradient: "linear-gradient(135deg, #0f2027, #203a43, #2c5364)",
+    name: "NRG Stadium",
+    city: "Houston",
+    country: "United States",
+    match: "پرتغال vs کنگو",
+    date: "۱۷ ژوئن ۲۰۲۶",
+    image: "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=600&h=400&fit=crop",
   },
   {
     id: 2,
-    name: "Education City Stadium",
-    city: "Al Rayyan",
-    match: "پرتغال vs اروگوئه",
-    gradient: "linear-gradient(135deg, #1a0033, #4a0080, #7b00cc)",
+    name: "NRG Stadium",
+    city: "Houston",
+    country: "United States",
+    match: "پرتغال vs ازبکستان",
+    date: "۲۳ ژوئن ۲۰۲۶",
+    image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&h=400&fit=crop",
   },
   {
     id: 3,
-    name: "Stadium 974",
-    city: "Doha",
-    match: "پرتغال vs کره جنوبی",
-    gradient: "linear-gradient(135deg, #1c0000, #6b0000, #cc0000)",
+    name: "Hard Rock Stadium",
+    city: "Miami",
+    country: "United States",
+    match: "کلمبیا vs پرتغال",
+    date: "۲۷ ژوئن ۲۰۲۶",
+    image: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600&h=400&fit=crop",
   },
 ];
 
@@ -83,8 +91,8 @@ export default function Getticket({ userName, onComplete }: Props) {
   return (
     <div className="getticket-wrapper">
       <div className="getticket-header">
-        <h2>انتخاب استادیوم</h2>
-        <p>بازی‌های پرتغال در جام جهانی ۲۰۲۲ قطر</p>
+        <h2>جام جهانی ۲۰۲۶</h2>
+        <p>بازی‌های پرتغال در مرحله گروهی — گروه K</p>
       </div>
 
       <div className="stadium-grid">
@@ -92,14 +100,17 @@ export default function Getticket({ userName, onComplete }: Props) {
           <div
             key={s.id}
             className={`stadium-card ${selected === s.id ? "selected" : ""}`}
-            style={{ background: s.gradient }}
             onClick={() => handleSelectStadium(s.id)}
           >
-            <div className="stadium-icon">🏟️</div>
+            <div className="stadium-image">
+              <img src={s.image} alt={s.name} />
+              <div className="stadium-image-overlay" />
+            </div>
             <div className="stadium-info">
-              <h3>{s.name}</h3>
-              <p className="stadium-city">{s.city}</p>
-              <p className="stadium-match">{s.match}</p>
+              <h3>{s.match}</h3>
+              <p className="stadium-date">{s.date}</p>
+              <p className="stadium-venue">{s.name}</p>
+              <p className="stadium-city">{s.city}, {s.country}</p>
             </div>
             <div className="stadium-glow" />
             {selected === s.id && (
@@ -197,7 +208,7 @@ export default function Getticket({ userName, onComplete }: Props) {
           </div>
 
           <button
-            className={`btn primary ticket-buy-btn ${isComplete ? "" : "disabled"}`}
+            className={`ticket-buy-btn ${isComplete ? "" : "disabled"}`}
             disabled={!isComplete}
             onClick={handleBuy}
           >

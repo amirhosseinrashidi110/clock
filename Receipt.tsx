@@ -2,7 +2,9 @@ type TicketData = {
   stadium: {
     name: string;
     city: string;
+    country?: string;
     match: string;
+    date?: string;
   };
   choice: {
     side: string;
@@ -28,7 +30,7 @@ export default function Receipt({ userName, userPhone, ticket, onBack }: Props) 
         <div className="receipt-header">
           <div className="receipt-logo">⚽</div>
           <h2>رسید خرید بلیط</h2>
-          <p className="receipt-subtitle">جام جهانی ۲۰۲۲ قطر</p>
+          <p className="receipt-subtitle">جام جهانی ۲۰۲۶ — آمریکا، کانادا، مکزیک</p>
         </div>
 
         <div className="receipt-divider" />
@@ -39,13 +41,19 @@ export default function Receipt({ userName, userPhone, ticket, onBack }: Props) 
             <span className="receipt-label">مسابقه:</span>
             <span className="receipt-value">{ticket.stadium.match}</span>
           </div>
+          {ticket.stadium.date && (
+            <div className="receipt-row">
+              <span className="receipt-label">تاریخ:</span>
+              <span className="receipt-value">{ticket.stadium.date}</span>
+            </div>
+          )}
           <div className="receipt-row">
             <span className="receipt-label">ورزشگاه:</span>
             <span className="receipt-value">{ticket.stadium.name}</span>
           </div>
           <div className="receipt-row">
             <span className="receipt-label">شهر:</span>
-            <span className="receipt-value">{ticket.stadium.city}</span>
+            <span className="receipt-value">{ticket.stadium.city}{ticket.stadium.country ? `, ${ticket.stadium.country}` : ""}</span>
           </div>
         </div>
 
