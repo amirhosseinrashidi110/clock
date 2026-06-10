@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import ClockBar from "./ClockBar";
-import Login from "./Login";
-import Getticket from "./Getticket";
-import Receipt from "./Receipt";
+import ClockBar from "./src/components/ClockBar";
+import Login from "./src/components/Login";
+import Getticket from "./src/components/Getticket";
+import Receipt from "./src/components/Receipt";
 import portugalSong from "./assets/Download Portugal World Cup Song by Mason - Listen MP3 & WAV for FREE on audio.com.mp3";
 
 type User = {

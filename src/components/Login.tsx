@@ -33,7 +33,11 @@ export default function Login({ onLogin }: Props) {
       return;
     }
 
-    onLogin({ name: name.trim(), phone: phone.trim(), nationalId: nationalId.trim() });
+    onLogin({
+      name: name.trim(),
+      phone: phone.trim(),
+      nationalId: nationalId.trim(),
+    });
   };
 
   return (
@@ -44,7 +48,7 @@ export default function Login({ onLogin }: Props) {
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="login-icon">⚽</div>
         <h2 className="login-title">ورود به سامانه خرید بلیط</h2>
-        <p className="login-subtitle">جام جهانی ۲۰۲۲ قطر</p>
+        <p className="login-subtitle">جام جهانی ۲۰۲۶ امریکا</p>
 
         <div className="login-fields">
           <div className="login-field">
