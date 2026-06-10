@@ -916,17 +916,6 @@ body::before {
   box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3), 0 32px 64px rgba(0, 0, 0, 0.5);
 }
 
-.stadium-icon {
-  font-size: 64px;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 1;
-}
-
-.stadium-card:hover .stadium-icon {
-  transform: scale(1.2) rotate(-8deg);
-}
-
 .stadium-info {
   text-align: center;
   z-index: 1;
