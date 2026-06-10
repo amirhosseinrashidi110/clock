@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 
-type Mode = "clock" | "stopwatch" | "timer";
+type Props = {
+  musicPlaying: boolean;
+  onToggleMusic: () => void;
+  userName: string;
+  onLogout: () => void;
+};
 
-export default function ClockBar() {
+export default function ClockBar({ musicPlaying, onToggleMusic, userName, onLogout }: Props) {
   const [now, setNow] = useState<Date>(new Date());
-  const [mode, setMode] = useState<Mode>("clock");
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
@@ -15,46 +19,29 @@ export default function ClockBar() {
   const formatTime = (d: Date): string =>
     d.toLocaleTimeString("en-GB", { hour12: false });
 
-  const formatShort = (d: Date): string =>
-    d.toLocaleTimeString("en-GB", { hour12: false, hour: "2-digit", minute: "2-digit" });
+  const formatDate = (d: Date): string =>
+    d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
 
   return (
     <div className={`clock-bar ${expanded ? "expanded" : ""}`}>
       <div className="clock-bar-main" onClick={() => setExpanded(!expanded)}>
         <span className="clock-bar-icon">🕐</span>
-        <span className="clock-bar-time">{mode === "clock" ? formatTime(now) : formatShort(now)}</span>
-        <span className="clock-bar-date">{now.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" })}</span>
-        <span className="clock-bar-expand">{expanded ? "▲" : "▼"}</span>
+        <span className="clock-bar-time">{formatTime(now)}</span>
+        <span className="clock-bar-date">{formatDate(now)}</span>
+        <button className="music-toggle" onClick={(e) => { e.stopPropagation(); onToggleMusic(); }}>
+          {musicPlaying ? "🔊" : "🔇"}
+        </button>
+        <span className="clock-bar-user">خوش آمدید، {userName}</span>
+        <button className="btn-logout" onClick={(e) => { e.stopPropagation(); onLogout(); }}>
+          خروج
+        </button>
       </div>
 
       {expanded && (
         <div className="clock-bar-expanded">
-          <div className="clock-bar-tabs">
-            <button
-              className={`clock-bar-tab ${mode === "clock" ? "active" : ""}`}
-              onClick={() => setMode("clock")}
-            >
-              🕐 ساعت
-            </button>
-            <button
-              className={`clock-bar-tab ${mode === "stopwatch" ? "active" : ""}`}
-              onClick={() => setMode("stopwatch")}
-            >
-              ⏱ کرنومتر
-            </button>
-            <button
-              className={`clock-bar-tab ${mode === "timer" ? "active" : ""}`}
-              onClick={() => setMode("timer")}
-            >
-              ⏰ تایمر
-            </button>
+          <div className="clock-bar-content">
+            <div className="clock-bar-big">{formatTime(now)}</div>
           </div>
-
-          {mode === "clock" && (
-            <div className="clock-bar-content">
-              <div className="clock-bar-big">{formatTime(now)}</div>
-            </div>
-          )}
         </div>
       )}
     </div>
