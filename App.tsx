@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ClockApp from "./ClockApp";
+import ClockBar from "./ClockBar";
 import Login from "./Login";
 import Getticket from "./Getticket";
 import Receipt from "./Receipt";
@@ -14,7 +14,9 @@ type TicketData = {
   stadium: {
     name: string;
     city: string;
+    country?: string;
     match: string;
+    date?: string;
   };
   choice: {
     side: string;
@@ -47,14 +49,8 @@ function App() {
 
   return (
     <>
-      <div className="user-bar">
-        <span>خوش آمدید، {user.name}</span>
-        <button className="btn-logout" onClick={() => setUser(null)}>
-          خروج
-        </button>
-      </div>
+      <ClockBar />
       <Getticket userName={user.name} onComplete={(t) => setTicket(t)} />
-      <ClockApp />
     </>
   );
 }
