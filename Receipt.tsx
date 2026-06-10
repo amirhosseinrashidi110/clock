@@ -102,7 +102,7 @@ export default function Receipt({ userName, userPhone, ticket, onBack }: Props) 
           </div>
         </div>
 
-        <button className="btn primary receipt-back-btn" onClick={onBack}>
+        <button className="receipt-back-btn" onClick={onBack}>
           بازگشت به صفحه اصلی
         </button>
       </div>
