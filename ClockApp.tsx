@@ -244,10 +244,10 @@ export default function ClockApp() {
                 </div>
                 <div className="edit-actions">
                   <button className="btn primary" onClick={saveEditTime}>
-                    ✓ ذخیره
+                    ✓ Save
                   </button>
                   <button className="btn secondary" onClick={cancelEditTime}>
-                    ✕ لغو
+                    ✕ Cancel
                   </button>
                 </div>
               </div>
